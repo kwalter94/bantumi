@@ -1,0 +1,22 @@
+name: bantumi
+version: 0.1.0
+
+authors:
+  - Walter Kaunda <walterkaunda@gmail.com>
+
+targets:
+  bantumi:
+    main: src/bantumi.cr
+
+crystal: 1.5.1
+
+license: MIT
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
+    version: ~> 1.0.0
