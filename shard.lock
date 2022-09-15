@@ -8,6 +8,14 @@ shards:
     git: https://github.com/sija/backtracer.cr.git
     version: 1.2.2
 
+  db:
+    git: https://github.com/crystal-lang/crystal-db.git
+    version: 0.10.1
+
+  dotenv:
+    git: https://github.com/gdotdesign/cr-dotenv.git
+    version: 1.0.0
+
   exception_page:
     git: https://github.com/crystal-loot/exception_page.git
     version: 0.2.2
@@ -16,7 +24,19 @@ shards:
     git: https://github.com/kemalcr/kemal.git
     version: 1.2.0
 
+  micrate:
+    git: https://github.com/amberframework/micrate.git
+    version: 0.12.0
+
+  multi_auth:
+    git: https://github.com/msa7/multi_auth.git
+    version: 1.1.1
+
   radix:
     git: https://github.com/luislavena/radix.git
     version: 0.4.1
+
+  sqlite3:
+    git: https://github.com/crystal-lang/crystal-sqlite3.git
+    version: 0.18.0
 

@@ -7,6 +7,7 @@ authors:
 targets:
   bantumi:
     main: src/bantumi.cr
+    micrate: src/micrate.cr
 
 crystal: 1.5.1
 
@@ -15,6 +16,15 @@ license: MIT
 dependencies:
   kemal:
     github: kemalcr/kemal
+  multi_auth:
+    github: msa7/multi_auth
+  dotenv:
+    github: gdotdesign/cr-dotenv
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+  micrate:
+    github: amberframework/micrate
+    version: 0.12.0
 
 development_dependencies:
   ameba:
