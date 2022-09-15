@@ -6,6 +6,6 @@ require "./bantumi/web"
 module Bantumi
   VERSION = "0.1.0"
 
-  Log.info { "Starting application..." }
+  Log.info { "Starting web server..." }
   Bantumi::Web.start
 end
