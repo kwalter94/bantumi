@@ -6,7 +6,7 @@ CREATE TABLE users (
     fullname VARCHAR(256),
     email VARCHAR(256),
     avatar VARCHAR(512),
-    location VARCHAR(512)
+    address VARCHAR(512)
 );
 -- +micrate Down
 -- SQL section 'Down' is executed when this migration is rolled back

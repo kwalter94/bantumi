@@ -4,7 +4,9 @@ require "sqlite3"
 require "./config"
 
 module Bantumi::Database
-  def self.connection(&block : DB::Database -> Void)
+  extend self
+
+  def connection(&block : DB::Database -> T) forall T
     DB.open(Config::DATABASE_CONNECTION_STRING, &block)
   end
 end

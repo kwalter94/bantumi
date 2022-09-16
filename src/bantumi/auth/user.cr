@@ -1,8 +1,8 @@
 module Bantumi::Auth
   struct User
-    def initialize(@username, @fullname, @email, @avatar, @address); end
+    def initialize(@username, @fullname, @email, @avatar, @address, @id = nil); end
 
-    property id : Int32?
+    property id : Int64?
     property username : String
     property fullname : String?
     property email : String?
