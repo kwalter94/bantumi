@@ -24,7 +24,7 @@ dependencies:
     github: crystal-lang/crystal-sqlite3
   micrate:
     github: amberframework/micrate
-    version: 0.12.0
+    version: ~> 0.12.0
 
 development_dependencies:
   ameba:
