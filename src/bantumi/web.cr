@@ -4,10 +4,17 @@ require "kemal"
 
 require "./auth/provider"
 require "./web/helpers"
+require "./web/middleware"
 
 module Bantumi::Web
   include Helpers::Macros
   extend Helpers::Methods
+
+  add_handler Middleware::Auth.new
+
+  get "/" do |env|
+    env.redirect("/index.html")
+  end
 
   get "/auth/login" do |env|
     env.redirect(Auth::Provider.authorize_uri)
@@ -19,14 +26,14 @@ module Bantumi::Web
     if refresh_token.nil?
       render_ecr!("login-error")
     else
-      set_cookie(env, "refresh", refresh_token.token, path: "/auth/refresh-token",
+      set_cookie(env, "refresh", refresh_token.token, path: "/api/auth/refresh-token",
                                                       http_only: true,
                                                       expires: refresh_token.expires)
       env.redirect("/index.html")
     end
   end
 
-  get "/auth/refresh-token" do |env|
+  get "/api/auth/refresh-token" do |env|
     refresh_token = get_cookie(env, "refresh")
     access_token = Auth::Provider.refresh_access_token(refresh_token) if refresh_token
 
