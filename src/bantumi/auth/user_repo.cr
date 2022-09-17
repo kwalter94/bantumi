@@ -81,13 +81,27 @@ module Bantumi::Auth::UserRepo
   def update_user(user : User) : User
     Log.debug { "Updating user ##{user.id}" }
     Database.connection do |connection|
-      connection.exec(
-        "UPDATE users SET fullname = ?, email = ?, avatar = ?, address = ?",
-        user.fullname,
-        user.email,
-        user.avatar,
-        user.address
-      )
+      if user.id
+        connection.exec(
+          "UPDATE users SET fullname = ?, email = ?, avatar = ?, address = ? WHERE id = ?",
+          user.fullname,
+          user.email,
+          user.avatar,
+          user.address,
+          user.id
+        )
+      else
+        user_id = connection.query_one?(
+          "UPDATE users SET fullname = ?, email = ?, avatar = ?, address = ? WHERE username = ? RETURNING id ",
+          user.fullname,
+          user.email,
+          user.avatar,
+          user.address,
+          user.username,
+          &.read(Int64)
+        )
+        user.id = user_id
+      end
     end
 
     user
