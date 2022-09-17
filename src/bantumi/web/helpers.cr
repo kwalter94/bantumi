@@ -9,18 +9,18 @@ module Bantumi::Web::Helpers
   end
 
   module Methods
-    def set_cookie(env, name : String, value : String, **options)
+    def set_cookie(env : HTTP::Server::Context, name : String, value : String, **options)
       cookie = HTTP::Cookie.new(**options, name: name, value: value)
       env.response.cookies << cookie
     end
 
-    def get_cookie(env, name : String) : String?
+    def get_cookie(env : HTTP::Server::Context, name : String) : String?
       return nil unless env.request.cookies[name]?
 
       env.request.cookies[name].value
     end
 
-    def render_json(env, json : Hash(String, Object), status_code : Int32 = 200) : String
+    def render_json(env : HTTP::Server::Context, json : Hash(String, Object), status_code : Int32 = 200) : String
       env.response.headers["Content-type"] = "Application/json"
       env.response.status_code = status_code
 
